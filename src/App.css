@@ -1,0 +1,42 @@
+main {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+body{
+  background: rgb(14,98,230);
+  background: linear-gradient(90deg, rgba(14,98,230,1) 0%, rgba(44,92,210,1) 3%, rgba(27,90,222,1) 35%, rgba(0,212,255,1) 100%);
+}
+
+.btn {
+  background-color: transparent;
+  width: 60%;
+  height: 35px;
+  padding: 5px 10px;
+  color: white;
+  outline: none;
+  border: 2px solid #DA966A;
+  border-radius: 25px;
+  text-align: center;
+}
+
+input{
+  font-size: 25px;
+  width: 100%
+}
+
+button{
+  width: 50px;
+  height: 50px;
+}
+
+
+.btn:hover {
+  background-color: #F5ECEE;
+  color: #456142;
+}
+
+.green{color: limegreen}
+.red{color: red}
