@@ -1,5 +1,6 @@
 let fairyTaleWordScore
-if (!(localStorage.getItem('fairyTaleWords'))) {
+if (!(localStorage.getItem('fairyTaleWords') !== null)) {
+  console.log("Wow")
   const fairyTaleWord = [
   "Abschlusszeugnis",
   "abstauben",
@@ -153,7 +154,7 @@ if (!(localStorage.getItem('fairyTaleWords'))) {
 ];
   fairyTaleWordScore = fairyTaleWord.map(word => ({ word, score: 0 }));
 } else {
-  fairyTaleWordScore = JSON.Parse(localStorage.getItem('fairyTaleWords'))
+  fairyTaleWordScore = JSON.parse(localStorage.getItem('fairyTaleWords'))
 }
 
 export const fairyTaleWords = fairyTaleWordScore

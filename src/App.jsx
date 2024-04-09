@@ -53,6 +53,7 @@ export default function App() {
       statusRef.current.textContent = "Incorrect!"
       fairyTaleWords[index].score = pastScore - 1
     }
+    localStorage.setItem('fairyTaleWords', JSON.stringify(fairyTaleWords))
   }
 
   const textAdder = (char) => {
