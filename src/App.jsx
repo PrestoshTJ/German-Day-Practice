@@ -34,7 +34,7 @@ export default function App() {
     if ('speechSynthesis' in window) {
       const msg = new SpeechSynthesisUtterance()
       msg.text = randWord
-      // msg.lang = "German"
+      msg.lang = "de-DE"
       window.speechSynthesis.speak(msg)
       console.log(msg)
     } else {
