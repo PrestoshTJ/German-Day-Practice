@@ -11,8 +11,10 @@ export default function App() {
   const negRef = useRef(null)
   const [word, useWord] = useState("")
   const [index, useIndex] = useState(0)
+  const [wordSubmitted, setWordSubmitted] = useState(false)
 
   const randomizer = () => {
+    setWordSubmitted(false)
     wordRef.current.textContent = ""
     statusRef.current.textContent = ""
     spellRef.current.value = ""
@@ -54,6 +56,8 @@ export default function App() {
       fairyTaleWords[index].score = pastScore - 1
     }
     localStorage.setItem('fairyTaleWords', JSON.stringify(fairyTaleWords))
+    setWordSubmitted(true)
+    
   }
 
   const textAdder = (char) => {
@@ -76,6 +80,24 @@ export default function App() {
     negRef.current.textContent = "You have " + negCount + " Skill issues"
     
   }
+
+  const nounChecker = () => {
+    let result = "no"
+    console.log(word[0])
+    if (word[0] == word[0].toUpperCase() ) {
+      result = "yes"
+    }
+    console.log(result)
+    if ('speechSynthesis' in window) {
+      const msg = new SpeechSynthesisUtterance()
+      msg.text = result
+      // msg.lang = "German"
+      window.speechSynthesis.speak(msg)
+      console.log(msg)
+    } else {
+      //Yeah kinda sucks for u ig
+    }
+  }
    
   return (
     <main>
@@ -86,13 +108,14 @@ export default function App() {
       <div>
         <button className = "btn" onClick = {randomizer}> New Word </button>
         <button className = "btn" onClick = {vocalizerBypass}> Repeat Word </button>
+        <button className = "btn" onClick = {nounChecker}> Ist es ein Nommen? </button>
         <button className = "btn" onClick = {statChecker}> Stats </button>
       </div>
       <h1 ref = {wordRef} className = "trueWord"></h1>
       <div className = "form">
         <input ref = {spellRef} type = "text" />
       </div>
-      <button className = "btn" onClick = {checker}> Submit </button>
+      <button className = "btn" onClick = {checker} disabled = {wordSubmitted}> Submit </button>
       <h1 ref = {statusRef}></h1>
       <div>
         {['Ä', 'Ö', 'Ü', 'ä', 'ö', 'ü', 'ß'].map((char, index) => (
